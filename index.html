@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
         <title>Home</title>
@@ -6,15 +7,16 @@
         <link rel="stylesheet" type="text/css" href="style/style.css?<?php echo time(); ?>" />
     </head>
     <body>
-        <header>
+        <div class="center-v-h">
 
-            <h2>PolySnake <em>V0.01</em></h2>
-        
+            <h1 id="logo">🐍</h1>
+            <h1>PolySnake<sub>0.0.2</sub></h1>
+            
             <form action="login.php" method="post">
-                <p>Nickname: <input type="text" name="nickname"
-                placeholder="dudule" required autofocus></p>
+                <input class="formText" type="text" name="nickname"
+                placeholder="nickname" required autofocus>
                 <input class="formButton" type="submit" value="Log in">
             </form>
-        </header>
+        </div>
     </body>
 </html>

@@ -17,15 +17,15 @@ try {
     if(alreadyExist($nickname, $dbh)) {
         ?>
         
+        <h1>User registered</h1>
         <p>
-            User registered</br>
             <form action="connect.php" method="post">
                 <input type="hidden" name="nickname" value="<?php echo $nickname; ?>">
-                <p>ID: <input type="password" name="user_id" placeholder="xxxxxx" required autofocus></p>
+                <input type="password" name="user_id" placeholder="your id: xxxxxx" required autofocus></p>
                 <input class="formButton" type="submit" value="Play">
             </form>
             
-            <form action="index.php">
+            <form action="index.html">
                 <input class="formButton" type="submit" value="Go Back">
             </form>
         </p>

@@ -15,7 +15,7 @@ let score = 0;
 let screenRatio = 0.8;
 
 function setup() {
-    background(64, 149, 217);
+    background(10);
 
     //set the canvas and modify css to match canvas size
     if(windowHeight > windowWidth) {
@@ -48,7 +48,7 @@ function setup() {
 }
 
 function draw() {
-    background(64, 149, 217);
+    background(40);
     
     
     //used to debug:

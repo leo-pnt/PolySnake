@@ -10,9 +10,12 @@ class Apple {
 
     display() {
         push();
-        fill(64, 255, 230);
+        //fill(64, 255, 230);
+        fill(255);
         noStroke();
-        rect(this.gridPos.x, this.gridPos.y, this.sizeX, this.sizeY);
+        ellipseMode(CORNER);
+        //rect(this.gridPos.x, this.gridPos.y, this.sizeX, this.sizeY);
+        ellipse(this.gridPos.x, this.gridPos.y, this.sizeX, this.sizeY);
         pop();
     }
 

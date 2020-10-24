@@ -37,8 +37,8 @@ try {
         //id or nickname incorrect!
         ?>
 
+            <h1>Nickname and ID doesn't match</h1>
             <p>
-                Nickname and ID doesn't match
                 <form action="login.php" method="post">
                     <input type="hidden" name="nickname" value="<?php echo $nickname; ?>">
                     <input class="formButton" type="submit" value="Go back" autofocus>

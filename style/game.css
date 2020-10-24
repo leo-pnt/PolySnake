@@ -4,12 +4,8 @@ body {
     margin-right: auto;
     font-family: 'Courier New', Courier, monospace;
     padding: 0;
-    background: rgb(64, 149, 217);
-    color: white;
-}
-
-h2 {
-    margin: 0;
+    background: white;
+    color: black;
 }
 
 p {

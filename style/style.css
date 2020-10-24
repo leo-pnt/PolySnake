@@ -1,23 +1,58 @@
-header form {
-    display: inline-block;
+form input[type=text], form input[type=password] {
+    height: 30px;
+    font-size: 1em;
 }
 
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 4px;
+}
 
 body {
     text-align: center;
-    font-family: 'Courier New', Courier, monospace;
-    background: rgb(64, 149, 217);
-    color: white;
+    font-family: Helvetica, sans-serif;
+    background: white;
+}
+
+h1 {
+    font-weight: 100;
+    font-size: 42px;
+}
+
+sub {
+    font-size: 10px;
+    font-weight: 100;
+}
+
+h1, p {
+    background-image: linear-gradient( 135deg, #5EFCE8 10%, #736EFE 100%);
+    background-clip: text;
+    background-color: #5EFCE8;
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-text-fill-color: transparent;
+}
+
+#logo {
+    font-size: 5em;
 }
 
 .formButton {
-    background: #74b9ff;
+    background: #7bed9f;
     color: white;
     border-style: none;
-    box-shadow: 6px 8px 20px -12px rgba(0,0,0,0.75);
     border-radius: 50px;
     border-color: white;
+    box-shadow: 2px 2px 39px -17px rgba(0,0,0,0.75);
+    background-image: linear-gradient( 135deg, #5EFCE8 10%, #736EFE 100%);
     width: 130px;
-    height: 30px;
+    height: 40px;
+    font-size: 1em;
     text-shadow: none;
 }
