@@ -1,0 +1,23 @@
+header form {
+    display: inline-block;
+}
+
+
+body {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    background: rgb(64, 149, 217);
+    color: white;
+}
+
+.formButton {
+    background: #74b9ff;
+    color: white;
+    border-style: none;
+    box-shadow: 6px 8px 20px -12px rgba(0,0,0,0.75);
+    border-radius: 50px;
+    border-color: white;
+    width: 130px;
+    height: 30px;
+    text-shadow: none;
+}
