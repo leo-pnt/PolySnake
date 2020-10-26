@@ -13,7 +13,6 @@ $bestScore = $row['best_score'];
 
 ?>
 
-<!DOCTYPE html>
 <html>
     <head>
         <title>PolySnake</title>

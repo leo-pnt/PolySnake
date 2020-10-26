@@ -59,7 +59,7 @@ function setup() {
         direction: Hammer.DIRECTION_ALL
     });
 
-  hammer.on("swipe", swiped);
+    hammer.on("swipe", swiped);
 }
 
 function draw() {
