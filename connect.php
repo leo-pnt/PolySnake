@@ -12,6 +12,8 @@ session_start();
     <body>
         
 <?php
+include('config/config.php');
+
 //check if nickname and id match
 
 if(isset($_POST['nickname'])) $nickname = test_input($_POST['nickname']);
@@ -19,13 +21,7 @@ if(isset($_POST['user_id'])) $user_id = test_input($_POST['user_id']);
 
 //connect to database and manage connection/registration
 try {
-    //get password from file
-    $f = fopen('credo.txt', 'r');
-    $mysqlPassword = fgets($f);
-
     $dbh = new PDO('mysql:host=localhost;dbname=polysnake', 'root', $mysqlPassword);
-
-    fclose($f);
 
     $req = $dbh->prepare("SELECT * from user_list WHERE nickname=?");
     $req->execute(array($nickname));

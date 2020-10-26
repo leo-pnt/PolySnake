@@ -7,3 +7,5 @@ A simple 2D snake game that you can play in your browser!
 
 ### The game in action: 
 ![alt text](https://github.com/leo-pnt/PolySnake/blob/main/img/scrnPolySnakeInAction.png "Main page menu")
+
+On the production server, you need to modify the mysql 'root' password in config/config.php

@@ -2,6 +2,8 @@
 /* script called by the js /!\CLIENT SIDE script at the end of a game to update database of a user */
 
 session_start();
+include('config/config.php')
+
 
 if(isset($_POST['score'])) {
     

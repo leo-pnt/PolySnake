@@ -1,13 +1,10 @@
 <?php
 session_start();
-//get password from file
-$f = fopen('credo.txt', 'r');
-$mysqlPassword = fgets($f);
+
+include('config/config.php');
 
 $dbh = new PDO('mysql:host=localhost;dbname=polysnake', 'root', $mysqlPassword);
 
-fclose($f);
-    
 $req = $dbh->prepare("SELECT * from user_list WHERE nickname=?");
 $req->execute(array($_SESSION['nickname']));
 

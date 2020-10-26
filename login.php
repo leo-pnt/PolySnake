@@ -7,20 +7,15 @@
     </head>
     <body>
 <?php
+include('config/config.php');
 
 //control the form input
 if(isset($_POST['nickname'])) $nickname = test_input($_POST['nickname']);
  
 //connect to database and manage connection/registration
 try {
-    //get password from file
-    $f = fopen('credo.txt', 'r');
-    $mysqlPassword = fgets($f);
-
     $dbh = new PDO('mysql:host=localhost;dbname=polysnake', 'root', $mysqlPassword);
 
-    fclose($f);    
-    
     if(alreadyExist($nickname, $dbh)) {
         ?>
         
