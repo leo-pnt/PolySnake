@@ -39,7 +39,7 @@ try {
         //id or nickname incorrect!
         ?>
 
-            <h1>Nickname and ID doesn't match</h1>
+            <h1>Nickname and ID don't match</h1>
             <p>
                 <form action="login.php" method="post">
                     <input type="hidden" name="nickname" value="<?php echo $nickname; ?>">
