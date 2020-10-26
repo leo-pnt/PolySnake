@@ -27,7 +27,7 @@ try {
                 <input class="formButton" type="submit" value="Play">
             </form>
             
-            <form action="index.html">
+            <form action="index.php">
                 <input class="formButton" type="submit" value="Go Back">
             </form>
         </p>

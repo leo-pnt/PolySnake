@@ -1,5 +1,4 @@
-// PolySnake V0.01
-// Online snake game
+// Polysnake main script
 // made with p5.js by @Github : leo-pnt
 
 
@@ -70,15 +69,14 @@ function setup() {
 
 function draw() {
     background(40);
-    
-    
+   
     //used to debug:
     //grid.display();
     
     
     if(snake.isColliding(grid.rowNb, grid.colNb)) {
-        gamePaused = true;
         gameEnded = true;
+        checkBestScore();
         
         if(!smartphoneMode) {
             document.getElementById("gametext").innerHTML = "GAME OVER --> reload the page to restart (press 'f5')";
@@ -87,7 +85,7 @@ function draw() {
             document.getElementById("gametext").innerHTML = "GAME OVER --> swipe up to restart";
         }
 
-        checkBestScore();
+        gamePaused = true;
         noLoop();
     }
 
@@ -95,6 +93,7 @@ function draw() {
 
     if(snake.checkAndEat(apple)) {
         score += 1;
+        trackScore();
 
         //update the score in html
         document.getElementById("score").innerHTML = "score: " + score.toString();
@@ -133,16 +132,32 @@ function swiped(event) {
 
 
 function checkBestScore() {
-    $.ajax({
-        url: 'bestScore.php',
-        type: 'post',
-        data: { "score": score },
+    if(!gamePaused && gameEnded) {
+        //to prevent cheating, check if the game is ended and not paused
+        //so user "can't" call checkBestScore when game is ended and not paused
+
+        $.ajax({
+            url: 'bestScore.php',
+            type: 'post',
+            data: { "score": score },
         
-        /*used for debug:*/
-        //success: function(response) { console.log(response); }
-    });
+            /*used for debug:*/
+            //success: function(response) { console.log(response); }
+        });
+    }
 }
 
+function trackScore() {
+    /* Function called to prevent cheating from server side */
+    $.ajax({
+        url: 'scoreTracker.php',
+        type: 'post',
+        data: { "score_tracked": score },
+        
+        /*used for debug:*/
+        success: function(response) { console.log(response); }
+        });
+}
 
 //function called when a key is pressed on the keyboard
 //it contain the key in the variable "keycode"

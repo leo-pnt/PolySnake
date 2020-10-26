@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+//reset the tracked score at new game
+//it is used in scoreTracker.php to prevent cheating
+$_SESSION['score_tracked'] = 0;
+
 include('config/config.php');
 
 $dbh = new PDO('mysql:host=localhost;dbname=polysnake', 'root', $mysqlPassword);
