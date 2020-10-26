@@ -18,15 +18,20 @@ function setup() {
     background(10);
 
     //set the canvas and modify css to match canvas size
+    //for smartphone setup with different aspect ratios
     if(windowHeight > windowWidth) {
         var myCanvas = createCanvas(screenRatio*windowWidth, screenRatio*windowWidth);
         document.getElementById("gameBoard").style.width = (screenRatio*windowWidth).toString() + "px";
         document.getElementById("gameBoard").style.height = (screenRatio*windowWidth).toString() + "px";
+        //game is paused by default
+        document.getElementById("gametext").innerHTML = "swipe up to start the game";
     }
     else {
         var myCanvas = createCanvas(screenRatio*windowHeight, screenRatio*windowHeight);
         document.getElementById("gameBoard").style.width = (screenRatio*windowHeight).toString() + "px";
         document.getElementById("gameBoard").style.height = (screenRatio*windowHeight).toString() + "px";
+        //game is paused by default
+        document.getElementById("gametext").innerHTML = "press 'p' to pause/unpause the game | " + "game is paused...";
     }
     myCanvas.parent("gameBoard");
 
@@ -43,8 +48,18 @@ function setup() {
     //it's built according to framRate velocity
     frameRate(10);
 
-    //game is paused by default
-    document.getElementById("gametext").innerHTML = "press 'p' to pause/unpause the game | " + "game is paused...";
+    //remove swipe default config
+    var options = {
+        preventDefault: true
+    };
+
+    // document.body registers gestures anywhere on the page
+    var hammer = new Hammer(document.body, options);
+    hammer.get('swipe').set({
+        direction: Hammer.DIRECTION_ALL
+    });
+
+  hammer.on("swipe", swiped);
 }
 
 function draw() {
@@ -75,6 +90,26 @@ function draw() {
 
     snake.display();
     apple.display();
+}
+
+function swiped(event) {
+  //debug
+  //console.log(event);
+
+  if (event.direction == 4) {
+    //msg = "you swiped right";
+    snake.playerMove(createVector(1, 0));
+  } else if (event.direction == 8) {
+    //msg = "you swiped up";
+    snake.playerMove(createVector(0, -1));
+    gamePaused = false;
+  } else if (event.direction == 16) {
+    //msg = "you swiped down";
+    snake.playerMove(createVector(0, 1));
+  } else if (event.direction == 2) {
+    //msg = "you swiped left";
+    snake.playerMove(createVector(-1, 0));
+  }
 }
 
 

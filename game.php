@@ -23,13 +23,12 @@ $bestScore = $row['best_score'];
         <link rel="stylesheet" type="text/css" href="style/game.css?<?php echo time(); ?>" />
 
         <script src="lib/jquery-3.5.1.min.js"></script>
+        <script src="lib/hammer.min.js"></script>
         <script src="lib/p5.min.js"></script>
     </head>
 
     <body>
-        <p id="gametext"style="font-family: 'Courier New', Courier, monospace;">
-            press 'p' to pause/unpause the game
-        </p>
+        <p id="gametext"style="font-family: 'Courier New', Courier, monospace;"></p>
         <p id="score">score: 0</p>
         <pre id="scoreBest">        best: <?php echo $bestScore; ?></pre>
 
