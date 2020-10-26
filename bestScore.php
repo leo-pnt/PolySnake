@@ -18,7 +18,7 @@ if(isset($_POST['score'])) {
         $row = $req->fetch();
         
         //update if score is greater:
-        if($_SESSION['score'] > $row['best_score'] || is_null($_row['best_score'])) {
+        if($_SESSION['score'] > $row['best_score']) {
             updateBestScore($dbh);
         }
 

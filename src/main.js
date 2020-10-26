@@ -102,7 +102,7 @@ function swiped(event) {
   } else if (event.direction == 8) {
     //msg = "you swiped up";
     snake.playerMove(createVector(0, -1));
-    gamePaused = false;
+    if(gamePaused) gamePaused = false;
   } else if (event.direction == 16) {
     //msg = "you swiped down";
     snake.playerMove(createVector(0, 1));
