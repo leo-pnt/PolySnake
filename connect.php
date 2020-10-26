@@ -27,13 +27,24 @@ try {
     $req->execute(array($nickname));
 
     $row = $req->fetch();
-    if($user_id == $row['user_id']) {
+    if($user_id == $row['user_id'] && !$row['cheater']) {
         //this is a match!
 
+        //setup session:
         $_SESSION['nickname'] = $nickname;
         $_SESSION['user_id'] = $user_id;
 
         header("Location: game.php");
+    }
+    elseif($row['cheater']) {
+        ?>
+            <h1>Account banned for cheating</h1>
+            <p>
+                <form action="index.php" method="post">
+                    <input class="formButton" type="submit" value="Go back" autofocus>
+                </form>
+            </p
+        <?php
     }
     else {
         //id or nickname incorrect!

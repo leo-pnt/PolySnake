@@ -17,6 +17,7 @@ try {
     $dbh = new PDO('mysql:host=localhost;dbname=polysnake', 'root', $mysqlPassword);
 
     if(alreadyExist($nickname, $dbh)) {
+
         ?>
         
         <h1>User registered</h1>

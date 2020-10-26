@@ -15,6 +15,12 @@ $req->execute(array($_SESSION['nickname']));
 $row = $req->fetch();
 $bestScore = $row['best_score']; 
 
+$dbh = null;
+
+if($row['cheater']) {
+    header('Location: index.php');
+    die();
+}
 ?>
 
 <html>

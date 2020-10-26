@@ -134,7 +134,6 @@ function swiped(event) {
 function checkBestScore() {
     if(!gamePaused && gameEnded) {
         //to prevent cheating, check if the game is ended and not paused
-        //so user "can't" call checkBestScore when game is ended and not paused
 
         $.ajax({
             url: 'bestScore.php',
@@ -155,8 +154,8 @@ function trackScore() {
         data: { "score_tracked": score },
         
         /*used for debug:*/
-        success: function(response) { console.log(response); }
-        });
+        //success: function(response) { console.log(response); }
+    });
 }
 
 //function called when a key is pressed on the keyboard

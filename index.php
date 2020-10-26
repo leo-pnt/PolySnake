@@ -40,7 +40,7 @@ while ($data = $req->fetch())
 }
 
 $req->closeCursor();
-
+$dbh = null;
 
 ?>
 </table>
