@@ -35,7 +35,7 @@ sub {
     font-weight: 100;
 }
 
-h1, h3, p {
+h1, h3, p , table, caption{
     background-image: linear-gradient( 135deg, #5EFCE8 10%, #736EFE 100%);
     background-clip: text;
     background-color: #5EFCE8;
@@ -62,4 +62,16 @@ h1, h3, p {
     height: 40px;
     font-size: 1em;
     text-shadow: none;
+}
+
+table {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+}
+
+th, td {
+    padding-left: 20px;
+    padding-right: 20px;
 }

@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
     <head>
         <title>Home</title>
@@ -18,6 +17,34 @@
                 placeholder="nickname" required autofocus>
                 <input class="formButton" type="submit" value="Log in">
             </form>
+
+<table>
+    <caption>Leaderboard</caption>
+    <tr>
+        <th>Nickname</th>
+        <th>Score</th>
+    </tr>
+<?php
+include('config/config.php');
+
+$dbh = new PDO('mysql:host=localhost;dbname=polysnake', 'root', $mysqlPassword);
+
+$req = $dbh->query("SELECT nickname, best_score from user_list ORDER BY best_score DESC LIMIT 0,3");
+
+while ($data = $req->fetch())
+{
+    echo '<tr>';
+    echo '<td>' . htmlspecialchars($data['nickname']) . '</td>';
+    echo '<td>' . htmlspecialchars($data['best_score']) . '</td>';
+    echo '</tr>';
+}
+
+$req->closeCursor();
+
+
+?>
+</table>
+
         </div>
     </body>
 </html>
