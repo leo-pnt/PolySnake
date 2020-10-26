@@ -13,7 +13,14 @@ if(isset($_POST['nickname'])) $nickname = test_input($_POST['nickname']);
  
 //connect to database and manage connection/registration
 try {
-    $dbh = new PDO('mysql:host=localhost;dbname=polysnake', 'root', '');
+    //get password from file
+    $f = fopen('credo.txt', 'r');
+    $mysqlPassword = fgets($f);
+
+    $dbh = new PDO('mysql:host=localhost;dbname=polysnake', 'root', $mysqlPassword);
+
+    fclose($f);    
+    
     if(alreadyExist($nickname, $dbh)) {
         ?>
         

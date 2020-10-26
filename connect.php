@@ -19,8 +19,14 @@ if(isset($_POST['user_id'])) $user_id = test_input($_POST['user_id']);
 
 //connect to database and manage connection/registration
 try {
-    $dbh = new PDO('mysql:host=localhost;dbname=polysnake', 'root', '');
-    
+    //get password from file
+    $f = fopen('credo.txt', 'r');
+    $mysqlPassword = fgets($f);
+
+    $dbh = new PDO('mysql:host=localhost;dbname=polysnake', 'root', $mysqlPassword);
+
+    fclose($f);
+
     $req = $dbh->prepare("SELECT * from user_list WHERE nickname=?");
     $req->execute(array($nickname));
 

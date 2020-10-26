@@ -9,7 +9,13 @@ if(isset($_POST['score'])) {
     $_SESSION['score'] = test_input($_POST['score']);
     
     try {
-        $dbh = new PDO('mysql:host=localhost;dbname=polysnake', 'root', '');
+        //get password from file
+        $f = fopen('credo.txt', 'r');
+        $mysqlPassword = fgets($f);
+
+        $dbh = new PDO('mysql:host=localhost;dbname=polysnake', 'root', $mysqlPassword);
+
+        fclose($f)
     
         $req = $dbh->prepare("SELECT * from user_list WHERE nickname=?");
         $req->execute(array($_SESSION['nickname']));
@@ -18,7 +24,7 @@ if(isset($_POST['score'])) {
         
         //update if score is greater:
         if($_SESSION['score'] > $row['best_score'] || is_null($_SESSION['score'])) {
-            updateBestScore();
+            updateBestScore($dbh);
         }
 
         $dbh = null;
@@ -29,19 +35,10 @@ if(isset($_POST['score'])) {
     }
 }
 
-function updateBestScore() {
-    try {
-        $dbh = new PDO('mysql:host=localhost;dbname=polysnake', 'root', '');
-
-        $req = $dbh->prepare('UPDATE user_list SET best_score = ? WHERE nickname = ?');
-        $req->execute(array($_SESSION['score'], $_SESSION['nickname']
-        ));        
-        $dbh = null;
-    }
-    catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage() . "<br/>";
-        die();
-    }    
+function updateBestScore($bdh) {
+    $req = $dbh->prepare('UPDATE user_list SET best_score = ? WHERE nickname = ?');
+    $req->execute(array($_SESSION['score'], $_SESSION['nickname']));        
+    $dbh = null;
 }
 
 function test_input($data) {
