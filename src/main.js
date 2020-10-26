@@ -10,6 +10,8 @@ var apple;
 let gamePaused = true;
 let gameEnded = false; //monitor game state
 
+let smartphoneMode; //true if the device is smartphone
+
 let score = 0;
 
 let screenRatio = 0.8;
@@ -20,6 +22,8 @@ function setup() {
     //set the canvas and modify css to match canvas size
     //for smartphone setup with different aspect ratios
     if(windowHeight > windowWidth) {
+        smartphoneMode = true;
+
         var myCanvas = createCanvas(screenRatio*windowWidth, screenRatio*windowWidth);
         document.getElementById("gameBoard").style.width = (screenRatio*windowWidth).toString() + "px";
         document.getElementById("gameBoard").style.height = (screenRatio*windowWidth).toString() + "px";
@@ -27,6 +31,8 @@ function setup() {
         document.getElementById("gametext").innerHTML = "swipe up to start the game";
     }
     else {
+        smartphoneMode = false;
+
         var myCanvas = createCanvas(screenRatio*windowHeight, screenRatio*windowHeight);
         document.getElementById("gameBoard").style.width = (screenRatio*windowHeight).toString() + "px";
         document.getElementById("gameBoard").style.height = (screenRatio*windowHeight).toString() + "px";
@@ -73,7 +79,13 @@ function draw() {
     if(snake.isColliding(grid.rowNb, grid.colNb)) {
         gamePaused = true;
         gameEnded = true;
-        document.getElementById("gametext").innerHTML = "GAME OVER --> press 'f5' to reload";
+        
+        if(!smartphoneMode) {
+            document.getElementById("gametext").innerHTML = "GAME OVER --> reload the page to restart (press 'f5')";
+        }
+        else {
+            document.getElementById("gametext").innerHTML = "GAME OVER --> swipe up to restart";
+        }
 
         checkBestScore();
         noLoop();
@@ -102,7 +114,14 @@ function swiped(event) {
   } else if (event.direction == 8) {
     //msg = "you swiped up";
     snake.playerMove(createVector(0, -1));
-    if(gamePaused) gamePaused = false;
+    if(gamePaused && !gameEnded) {
+        gamePaused = false;
+        document.getElementById("gametext").innerHTML = "game is running...";
+    }
+    else if(gameEnded) {
+        window.location.reload();
+    }
+
   } else if (event.direction == 16) {
     //msg = "you swiped down";
     snake.playerMove(createVector(0, 1));
