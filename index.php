@@ -9,7 +9,7 @@
         <div class="center-v-h">
 
             <h1 id="logo">🐍</h1>
-            <h1>PolySnake<sub>0.1.0</sub></h1>
+            <h1>PolySnake<sub>0.1.1</sub></h1>
             <h3>web-based snake game</h3>
 
             <form action="login.php" method="post">
