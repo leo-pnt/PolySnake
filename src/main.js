@@ -41,12 +41,12 @@ function setup() {
     myCanvas.parent("gameBoard");
 
     //the grid parameters
-    let nbRow = 20;
-    let nbCol = 20;    
+    let nbRow = 15;
+    let nbCol = 15;    
 
     //the objects initialization
     grid = new Grid(nbRow, nbCol);
-    snake = new Snake(4, 10, 15, width/nbRow, height/nbCol);
+    snake = new Snake(4, 7, 10, width/nbRow, height/nbCol);
     apple = new Apple(nbRow, nbCol, width/nbRow, height/nbCol, snake.position);
 
     //set the speed/difficulty of the game
