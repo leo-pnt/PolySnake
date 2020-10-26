@@ -37,6 +37,7 @@ try {
         header("Location: game.php");
     }
     elseif($row['cheater']) {
+        //this user is a cheater
         ?>
             <h1>Account banned for cheating</h1>
             <p>

@@ -30,6 +30,7 @@ if(isset($_POST['score'])) {
     }
     /* end of cheating check */
 
+
     try {
         $dbh = new PDO('mysql:host=localhost;dbname=polysnake', 'root', $mysqlPassword);
     

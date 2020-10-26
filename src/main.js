@@ -53,6 +53,11 @@ function setup() {
     //it's built according to framRate velocity
     frameRate(10);
 
+    
+    
+    /* swipe gesture setup. Comes from: */
+    /* https://editor.p5js.org/shiffman/sketches/HyEDRsPel */
+    
     //remove swipe default config
     var options = {
         preventDefault: true
@@ -85,7 +90,7 @@ function draw() {
             document.getElementById("gametext").innerHTML = "GAME OVER --> swipe up to restart";
         }
 
-        gamePaused = true;
+        gamePaused = true; //this need to be called after checkBestScore() to avoid some cheating cases
         noLoop();
     }
 
@@ -112,6 +117,7 @@ function swiped(event) {
     snake.playerMove(createVector(1, 0));
   } else if (event.direction == 8) {
     //msg = "you swiped up";
+    //this one is used as the user global control on smartphone
     snake.playerMove(createVector(0, -1));
     if(gamePaused && !gameEnded) {
         gamePaused = false;
@@ -147,7 +153,7 @@ function checkBestScore() {
 }
 
 function trackScore() {
-    /* Function called to prevent cheating from server side */
+    /* Function called on apple eaten to control cheating from server side */
     $.ajax({
         url: 'scoreTracker.php',
         type: 'post',
@@ -189,9 +195,5 @@ function keyTyped() {
                 document.getElementById("gametext").innerHTML = "press 'p' to pause/unpause the game | " + "game is paused...";
             }
         }
-    }
-    if(key == "r" && gameEnded) {
-        gameEnded = false;
-        reloadGame();
     }
 }

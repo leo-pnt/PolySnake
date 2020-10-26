@@ -1,4 +1,5 @@
 <?php
+/* script called each time an apple is eaten by the snake */
 session_start();
 include('config/config.php');
 
@@ -10,6 +11,7 @@ if(isset($_POST['score_tracked'])) {
         //cheating handling:
         $dbh = new PDO('mysql:host=localhost;dbname=polysnake', 'root', $mysqlPassword);
     
+        //user is updated as a cheater (true) and best_score is set to null
         $req = $dbh->prepare("UPDATE user_list SET cheater=?, best_score=? WHERE nickname=?");
         $req->execute(array(1, null, $_SESSION['nickname']));
 
